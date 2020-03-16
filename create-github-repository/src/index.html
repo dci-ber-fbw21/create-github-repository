@@ -6,43 +6,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title></title>
   </head>
-
   <body>
-    <main class="container">
-      <form>
-        <div>
-          <label for="name">Name</label>
-          <input type="text" name="name" id="name" />
-        </div>
-        <div>
-          <label for="description">Description</label>
-          <input type="text" name="description" id="description" />
-        </div>
-        <div>
-          <label for="Homepage">Homepage</label>
-          <input type="text" name="Homepage" id="Homepage" />
-        </div>
-        <div>
-          <label for="Private">Private</label>
-          <input
-            type="radio"
-            name="privacy"
-            id="private"
-            value="private"
-            checked
-          />
-          <label for="public">Public</label>
-          <input type="radio" id="public" name="privacy" value="public" />
-        </div>
-        <div>
-          <label for="to">Visibility</label>
-          <input type="checkbox" name="Visibility" id="Visibility" />
-          <input type="checkbox" name="Visibility2" id="Visibility2" />
-        </div>
-        <div>
-          <button>Send my greetings</button>
-        </div>
-      </form>
-    </main>
+    <header>
+      <ul>
+        <img src="images/rene-rodriguez.jpg">
+        <li>Signed in as rene-mdd</li>
+        <li>New repository</li>
+      </ul>
+    </header>
+    <section id="all">
+    <section id="widget2">
+      <h3>My repositories</h3>
+    </section>
+   
+    
+  </section>
+  <main class="container">
+    <form>
+      <div>
+        <h4>Create a new repository</h4>
+        <label for="name">Repository name</label><br>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div>
+        <label for="description">Description (optional)</label><br>
+        <input type="text" name="description" id="description" />
+      </div>
+      <div>
+        
+        <input type="radio" id="public" name="privacy" value="public" />
+        <label for="public">Public</label>
+        <br>
+        
+        <input
+          type="radio"
+          name="privacy"
+          id="private"
+          value="private"
+          checked
+        />
+        <label for="Private">Private</label>
+      </div>
+      <div>
+        <label for="public">Visibility: Public</label>
+        <input type="radio" name="visibility" id="public" value="public" checked />
+        <label for="private">Private</label>
+        <input type="radio" name="visibility" id="private" value="private" />
+      </div>
+      <div>
+        
+        <input type="radio" name="readme" id="readme" value="true" />
+        <label for="readme" id="readmeL">Initialize with README</label>
+        <p class="none2">This will immediatly clone the repository to your computer.</p>
+      </div>
+      <div>
+        <button id="createButton">Create repository</button>
+        <button id="getButton">Get repository</button>
+      </div>
+    </form>
+  </main>
   </body>
 </html>
