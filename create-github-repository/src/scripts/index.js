@@ -10,14 +10,14 @@ const apiKey = process.env.API_KEY;
 class repository {
   constructor(containerSelector) {
     //fetch
+    this.h2;
     this.container = document.getElementById(containerSelector);
     this.getRepository = document.getElementById("getButton");
     this.getRepository.addEventListener("click", e =>{
-     
       this.fetchFunc(e);
-    
     });
-
+    // document.querySelectorAll("div").addEventListener("mouseover", function(){this.getRepository.style.backgroundColor = "black"});
+    
     //create
     this.form = document.querySelector("form");
     this.createButton = document.getElementById("createButton");
@@ -54,11 +54,13 @@ class repository {
         this.anchor = document.createElement("a");
         console.log(this);
         this.container.appendChild(this.anchor);
-        this.anchor.setAttribute("href", `${curr.html_url}`)
+        this.anchor.setAttribute("href", `${curr.html_url}`);
+        this.div.setAttribute("class", "hover");
+        this.anchor.setAttribute("target", "_blank");
+        console.log(this.div)
         this.anchor.appendChild(this.div);
         this.div.appendChild(this.p).innerText = curr.name;
         this.div.appendChild(this.span).innerText = curr.description;
-        console.log(data.html_url);
         });
       })
     .catch(error => {
@@ -108,7 +110,9 @@ class repository {
   fetchFunc(e) {
     e.preventDefault();
     this.nameValue = document.getElementById("name").value;
-     console.log(this.nameValue);
+    this.container.style.transform = "translate(0px, -48%)";
+    this.container.style.transition = "all 2s";
+   
     fetch(
       `https://api.github.com/users/${this.nameValue}/repos`
     )
@@ -117,6 +121,9 @@ class repository {
       })
       .then(data => {
         data.forEach((curr, currIndex, listObj) => {
+          if (currIndex === 0){this.h2 = document.createElement("h2");
+          this.container.appendChild(this.h2).innerText = `${data[0].owner.login} repository`;
+        }
           this.p = document.createElement("p");
           this.span = document.createElement("span");
           this.div = document.createElement("div");
@@ -124,12 +131,14 @@ class repository {
           this.container.appendChild(this.div);
           this.div.appendChild(this.p).innerText = curr.name;
           this.div.appendChild(this.span).innerText = curr.description;
+          this.div.setAttribute("class", "hover");
           this.div.addEventListener("click", e => {
             window.open(
               `https://github.com/${this.nameValue}/${e.currentTarget.children[0].innerText}`
             );
           });
         });
+      
         console.log(data);
       })
       .catch(error => {
